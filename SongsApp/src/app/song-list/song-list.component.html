@@ -1,0 +1,51 @@
+<div class="container mt-4">
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <button class="btn btn-secondary" (click)="toggleSongCount()">Toggle Song Count</button>
+      <span *ngIf="showSongCount" class="ms-2">Number of songs: {{ songs.length }}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Songs List</h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+            <tr class="bg-success">
+              <th scope="col">#</th>
+              <th scope="col">Song Title</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tr *ngFor="let song of songs.sort();let i=index;">
+              <td>{{i+1}}</td>
+              <td>{{ song }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Add New Song</h4>
+        </div>
+        <div class="card-body">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInputInvalid" placeholder="Enter Song Name" [(ngModel)]="newSong" (keyup.enter)="addSong(newSong)">
+            <label for="floatingInputInvalid">Enter Song Name:</label>
+          </div>
+          <button class="btn btn-primary" (click)="addSong(newSong)">Add Song</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
